@@ -1,0 +1,19 @@
+{
+  "name": "simpletable-letter-xr",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "letterletter <26602729371@qq.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/Simpletable.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}

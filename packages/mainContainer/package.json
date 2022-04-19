@@ -1,0 +1,32 @@
+{
+  "name": "maincontainer",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "letterletter <26602729371@qq.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "src/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "start": "parcel index.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/plugin-syntax-jsx": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "card-letter-xr": "^0.0.0",
+    "simpletable-letter-xr": "^0.0.0"
+  }
+}

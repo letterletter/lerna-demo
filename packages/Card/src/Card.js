@@ -1,10 +1,10 @@
-import React from 'react';
-import './index.css';
+import { useEffect } from 'react';
+// import './index.css';
 function Card(props) {
     // TODO
-    // useEffect(() => {
-    //     console.log('Hello hhh', props)
-    // })
+    useEffect(() => {
+        console.log('Hello hhh', props)
+    })
     return (
         <div className='cardContainer'>
             <span>{props?.text + 'xidian'}</span>

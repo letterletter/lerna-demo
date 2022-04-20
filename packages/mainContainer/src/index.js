@@ -1,4 +1,3 @@
-import React from 'react'
 import MyTable from 'simpletable-letter-xr';
 import Card from 'card-letter-xr';
 // import Title from 'reactcard/dist/index';
@@ -8,7 +7,7 @@ const container = document.getElementById('app')
 const root = createRoot(container)
 const App = () => {
   return (
-    <div>
+    <div className='testclass'>
       <Card title='ddd' text='sss' />
       {/* <Title title="React 开发" /> */}
     </div>

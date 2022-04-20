@@ -1,0 +1,9 @@
+.testclass {
+  width: 100%;
+  height: 50%;
+  background-color: rgb(43, 226, 49);
+}
+
+body {
+  background-color: rgb(62, 153, 210);
+}

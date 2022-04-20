@@ -1,5 +1,6 @@
 
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'development', //打包为开发模式
@@ -18,8 +19,13 @@ module.exports = {
         exclude: /node_modules/,//屏蔽不需要处理的文件（文件夹）（可选）
         use:
           [
-            'style-loader',
-            'css-loader'
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true, //开启css module
+              }
+            }
           ],//loader的名称（必须）
       },
       {
@@ -34,6 +40,7 @@ module.exports = {
       }
     ],
   },
+  plugins: [new MiniCssExtractPlugin()],
   externals: [
     {
       react: {

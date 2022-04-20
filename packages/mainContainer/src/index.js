@@ -1,15 +1,18 @@
 import MyTable from 'simpletable-letter-xr';
 import Card from 'card-letter-xr';
-// import Title from 'reactcard/dist/index';
-import { createRoot } from 'react-dom/client';
+import Title, { Card as TitleCard } from 'reactcard/dist/index';
+import 'reactcard/dist/main.css';
+import 'card-letter-xr/dist/main.css';
 
+import { createRoot } from 'react-dom/client';
 const container = document.getElementById('app')
 const root = createRoot(container)
 const App = () => {
   return (
     <div className='testclass'>
       <Card title='ddd' text='sss' />
-      {/* <Title title="React 开发" /> */}
+      {/* <Title title="React 开发" />
+      <TitleCard /> */}
     </div>
   );
 }

@@ -16,3 +16,6 @@ lerna bootstrap --hoist axios // 提升公共包到根目录
 lerna clean // 删除所有依赖
 lerna clean --scope=package //删除某个包的依赖
 ```
+
+
+https://blog.csdn.net/i10630226/article/details/99702447

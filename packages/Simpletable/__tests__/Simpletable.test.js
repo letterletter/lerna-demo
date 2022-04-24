@@ -1,7 +1,9 @@
 'use strict';
 
-const simpletable = require('..');
+// const simpletable = require('../lib/Simpletable');
 
 describe('Simpletable', () => {
-    it('needs tests');
+    it('needs tests', () => {
+        console.log('test SimpleTable')
+    });
 });

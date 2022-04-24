@@ -1,8 +1,9 @@
 'use strict';
 
-const datetrans = require('..');
+// const datetrans = require('../lib/DateTrans');
 
 describe('DateTrans', () => {
-    it('needs tests');
-    datetrans.apply
+    it('needs tests', () => {
+        console.log('test DateTrans')
+    });
 });

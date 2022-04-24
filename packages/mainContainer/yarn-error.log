@@ -1,5 +1,5 @@
 Arguments: 
-  D:\ProgramFile\node\node.exe C:\Users\wufan\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add reactcard
+  D:\ProgramFile\node\node.exe C:\Users\wufan\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add note-letter-xr
 
 PATH: 
   E:\FrontEnd\lerna-demo\packages\mainContainer\node_modules\.bin;E:\FrontEnd\lerna-demo\packages\node_modules\.bin;E:\FrontEnd\lerna-demo\node_modules\.bin;E:\FrontEnd\node_modules\.bin;E:\node_modules\.bin;C:\Users\wufan\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\run-script\lib\node-gyp-bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\ProgramFile\Git\cmd;C:\Program Files\Java\jdk1.8.0_311\bin;C:\Program Files\Java\jdk1.8.0_311\jre\bin;%MAVEN__HOME%\bin\;D:\ProgramFile\nvm;D:\ProgramFile\node;C:\Users\wufan\AppData\Local\Microsoft\WindowsApps;C:\Users\wufan\AppData\Roaming\npm;D:\ProgramFile\flutter\bin;D:\ProgramFile\apache-maven-3.8.4-bin\apache-maven-3.8.4\bin;D:\ProgramFile\miktex\miktex\bin\x64\;D:\ProgramFile\texlive\2021\bin\win32;D:\nodecache\yarn\global\node_modules\.bin;D:\ProgramFile\Microsoft VS Code\bin
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.npmjs.org/reactcard: Not found
+  Error: https://registry.npmjs.org/note-letter-xr: Not found
       at Request.params.callback [as _callback] (C:\Users\wufan\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66988:18)
       at Request.self.callback (C:\Users\wufan\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140662:22)
       at Request.emit (events.js:315:20)
@@ -57,7 +57,10 @@ npm manifest:
       "@babel/plugin-transform-runtime": "^7.17.0",
       "@babel/preset-env": "^7.16.11",
       "@babel/preset-react": "^7.16.7",
-      "card-letter-xr": "^0.0.2"
+      "card-letter-xr": "^0.0.2",
+      "node": "^17.7.2",
+      "note-letter-xr": "^0.0.0",
+      "simpletable-letter-xr": "^0.0.0"
     },
     "resolutions": {
       "react": "18.0.0-rc.3",

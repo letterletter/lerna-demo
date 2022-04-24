@@ -1,7 +1,6 @@
 'use strict';
 import './index.css';
-module.exports = Note;
-
+import { useEffect } from 'react'
 function Note() {
     // TODO
     useEffect(() => {
@@ -13,3 +12,5 @@ function Note() {
         </div>
     )
 }
+
+module.exports = Note;

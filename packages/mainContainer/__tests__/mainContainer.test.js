@@ -1,7 +1,9 @@
 'use strict';
 
-const maincontainer = require('..');
+// const maincontainer = require('../src/index');
 
 describe('mainContainer', () => {
-    it('needs tests');
+    it('needs tests', () => {
+        console.log('test mainContainer')
+    });
 });

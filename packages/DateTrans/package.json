@@ -17,7 +17,13 @@
     "registry": "https://registry.npm.taobao.org"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "jest"
+  },
+  "peerDependencies": {
+    "@testing-library/react": "^13.1.1",
+    "@testing-library/react-hooks": "^8.0.0",
+    "enzyme": "^3.11.0",
+    "jest": "^27.5.1"
   },
   "dependencies": {
     "axios": "^0.22.0"

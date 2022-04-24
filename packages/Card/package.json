@@ -14,7 +14,7 @@
     "lib"
   ],
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1",
+    "test": "jest",
     "build": "webpack --config  webpack.base.config.js"
   },
   "peerDependencies": {

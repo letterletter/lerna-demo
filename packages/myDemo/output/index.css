@@ -1,0 +1,10 @@
+/* src/app.css */
+body {
+  margin: 0;
+}
+.appHeader {
+  height: 64px;
+  background-color: rgb(58, 100, 190);
+  color: white;
+  font-size: 20px;
+}

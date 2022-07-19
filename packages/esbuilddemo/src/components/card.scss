@@ -1,0 +1,14 @@
+.Card {
+  background-color: antiquewhite;
+  border-radius: 10px;
+  padding: 10px;
+  .card-title {
+    text-align: center;
+    font-size: 18px;
+    color: rgb(13, 11, 29);
+  }
+  .card-body {
+    height: 400px;
+    width: 300px;
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "name": "mydemo",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "wufan12 <wufan12@kuaishou.com>",
+  "homepage": "https://github.com/letterletter/lerna-demo#readme",
+  "license": "ISC",
+  "main": "lib/myDemo.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.corp.kuaishou.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/letterletter/lerna-demo.git"
+  },
+  "scripts": {
+    "start": "webpack serve  --config webpack.config.js",
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "esbuild src/index.tsx --outdir=dist --bundle",
+    "serve": "esbuild src/app.js --outfile=out.js --bundle --serve=8000"
+  },
+  "bugs": {
+    "url": "https://github.com/letterletter/lerna-demo/issues"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
+    "@types/node": "^18.0.3",
+    "@types/react": "^18.0.12",
+    "@types/react-dom": "^18.0.5",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.5",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "esbuild": "^0.14.49",
+    "eslint": "^8.17.0",
+    "html-webpack-plugin": "^5.5.0",
+    "http-server": "^14.1.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "typescript": "^4.7.3",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.2"
+  },
+  "dependencies": {
+    "@babel/plugin-syntax-jsx": "^7.17.12",
+    "babel-preset-react-app": "^10.0.1",
+    "css-loader": "^6.7.1",
+    "esbuild-plugin-less": "^1.1.8",
+    "fs-extra": "^10.1.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "minimatch": "^5.1.0",
+    "react-router-dom": "^6.3.0"
+  }
+}

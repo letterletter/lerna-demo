@@ -14,7 +14,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -23,7 +23,7 @@
     "experimentalDecorators": true
   },
   "include": [
-    "src", "esbuild.config.js",
+    "src", "esbuild.config.js", "react-shim.js",
     // "config",
     // "config.ts"
   ],

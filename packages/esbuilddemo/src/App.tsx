@@ -1,8 +1,11 @@
-import React, {  useEffect, useState } from 'react';
+import {  Children, ReactElement, useEffect, useState } from 'react';
 import { logInfo } from './utils';
 import Card from './components/Card';
 
-function App() {
+interface AppProps {
+  Children?: ReactElement
+}
+function App(props: AppProps) {
   let [count, setCount] = useState(0)
   useEffect(() => {
     console.log('in App');
@@ -16,6 +19,9 @@ function App() {
       App.js  count --- {count}
       <button onClick={handleAdd}>Add </button>
       <Card />
+      <div>
+        {props.Children}
+      </div>
     </div >
   );
 }

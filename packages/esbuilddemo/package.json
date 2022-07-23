@@ -21,10 +21,12 @@
     "url": "git+https://github.com/letterletter/lerna-demo.git"
   },
   "scripts": {
-    "buildes": "node ./esbuild.config.js",
+    "buildes": "node ./esbuild.config.js --",
+    "buildserver": "node ./build.js",
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build": "esbuild src/index.tsx --outdir=dist --bundle",
-    "serve": "esbuild src/app.js --outfile=out.js --bundle --serve=8000"
+    "serve": "esbuild src/app.js --outfile=out.js --bundle --serve=8000",
+    "buildPlugin": "esbuild plugins/cssModulePlugin.ts plugins/sassPlugin.ts --outdir=plugins --bundle --format=cjs --platform=node"
   },
   "bugs": {
     "url": "https://github.com/letterletter/lerna-demo/issues"
@@ -36,13 +38,18 @@
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
     "@babel/runtime": "^7.18.9",
+    "@types/css-tree": "^1.0.7",
+    "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.0.3",
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
+    "@types/tmp": "^0.2.3",
     "crypto": "^1.0.1",
     "css-tree": "^2.1.0",
     "esbuild": "^0.14.49",
     "eslint": "^8.17.0",
+    "koa-router": "^12.0.0",
+    "minimatch": "^5.1.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "sass": "^1.53.0",
@@ -56,7 +63,6 @@
     "koa": "^2.13.4",
     "koa-static": "^5.0.0",
     "livereload": "^0.9.3",
-    "minimatch": "^5.1.0",
     "react-router-dom": "^6.3.0"
   }
 }

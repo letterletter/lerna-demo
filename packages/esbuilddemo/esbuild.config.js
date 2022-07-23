@@ -5,7 +5,8 @@ const koa = require('koa');
 const fse = require('fs-extra');
 const removeConsolePlugin = require('./plugins/removeConsole');
 const aliasPlugin = require('./plugins/aliasPlugin');
-import sassPlugin from './plugins/sassPlugin';
+// const cssModulePlugin = require('./plugins/cssModulePlugin')
+const { sassPlugin } = require('./plugins/sassPlugin');
 const app = new koa();
 
 const livereload = require('livereload');
@@ -27,6 +28,10 @@ esbuild.build({
       'src': './src'
     }),
     sassPlugin()
+    // cssModulesPlugin({
+    //   localIdentName: "[local]--[hash:8:md5:hex]",
+    // }),
+    // sassPlugin()
 ],
   watch: {
     onRebuild(error, result) {

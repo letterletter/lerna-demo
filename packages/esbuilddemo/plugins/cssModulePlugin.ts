@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import util from 'util';
 import tmp from 'tmp';
 import path from 'path';
-import csstree from 'css-tree';
+import * as csstree from 'css-tree';
 import { Plugin } from 'esbuild';
 
 import {

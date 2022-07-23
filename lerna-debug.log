@@ -1,11 +1,13 @@
 0 silly argv {
 0 silly argv   _: [ 'add' ],
 0 silly argv   globs: [],
-0 silly argv   lernaVersion: '4.0.0',
-0 silly argv   '$0': 'C:\\Program Files\\nodejs\\node_modules\\lerna\\cli.js',
-0 silly argv   pkg: 'react_ts_demo'
+0 silly argv   lernaVersion: '5.1.8',
+0 silly argv   '$0': 'lerna',
+0 silly argv   pkg: 'vite-slate'
 0 silly argv }
-1 notice cli v4.0.0
-2 verbose rootPath E:\FrontEnd\lerna-demo
-3 error HttpErrorGeneral: 404 Not Found - GET https://registry.npmjs.org/react_ts_demo - Not found
-3 error     at E:\FrontEnd\lerna-demo\node_modules\_npm-registry-fetch@11.0.0@npm-registry-fetch\check-response.js:95:15
+1 notice cli v5.1.8
+2 verbose rootPath /Users/wufan/Code/lerna-demo
+3 error HttpErrorGeneral: 404 Not Found - GET https://npm.corp.kuaishou.com/vite-slate - no such package available
+3 error     at /Users/wufan/.nvm/versions/node/v16.14.0/lib/node_modules/lerna/node_modules/pacote/node_modules/npm-registry-fetch/lib/check-response.js:93:15
+3 error     at processTicksAndRejections (node:internal/process/task_queues:96:5)
+3 error     at async RegistryFetcher.packument (/Users/wufan/.nvm/versions/node/v16.14.0/lib/node_modules/lerna/node_modules/pacote/lib/registry.js:92:19)

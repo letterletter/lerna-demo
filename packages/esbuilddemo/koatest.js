@@ -36,18 +36,20 @@ export function visitFiles(
   }
 }
 
-let routeData = loadRoutes()
+// let routeData = loadRoutes()
 
 function loadRoutes() {
   let files = {};
   const appDir = path.join(__dirname, './config')
-  visitFiles(path.join(appDir, "routes"), (file) => {
+  visitFiles(path.join(appDir, "routes"), async (file) => {
     let routeId = createRouteId(path.join("routes", file));
       console.log('routerId', routeId, path.join( `${appDir}/routes/`, file))
-     import(path.join( `${appDir}/routes/`, file)).then(mod => {
-      // console.log('mod', mod)
-      files[routeId] = mod.__esModule && mod.default ? mod.default : mod;
-    })
+      let mod = await require(path.join( `${appDir}/routes/`, file))
+      console.log('mod', mod)
+    //  import(path.join( `${appDir}/routes/`, file)).then(mod => {
+    //   console.log('mod', mod)
+    //   files[routeId] = mod.__esModule && mod.default ? mod.default : mod;
+    // })
     return;
   });
   console.log('files', files)
@@ -58,7 +60,7 @@ function init() {
   const app = new koa();
   const router = new Router();
 
-  console.log('routeData', routeData)
+  // console.log('routeData', routeData)
   router.get(/\/*/, async(ctx, next) => {
     console.log(ctx.request.url);
     // const Comp = import('./routes/index.js');

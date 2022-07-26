@@ -30837,24 +30837,9 @@ function visitFiles(dir, visitor, baseDir = dir) {
     }
   }
 }
-var routeData = loadRoutes();
-function loadRoutes() {
-  let files = {};
-  const appDir = path.join(__dirname, "./config");
-  visitFiles(path.join(appDir, "routes"), (file) => {
-    let routeId = createRouteId(path.join("routes", file));
-    console.log("routerId", routeId, path.join(`${appDir}/routes/`, file));
-    import(path.join(`${appDir}/routes/`, file)).then((mod) => {
-      files[routeId] = mod.__esModule && mod.default ? mod.default : mod;
-    });
-    return;
-  });
-  return files;
-}
 function init() {
   const app = new koa();
   const router = new Router();
-  console.log("routeData", routeData);
   router.get(/\/*/, async (ctx, next) => {
     console.log(ctx.request.url);
     let content = renderToString(/* @__PURE__ */ React.createElement(Index, null));

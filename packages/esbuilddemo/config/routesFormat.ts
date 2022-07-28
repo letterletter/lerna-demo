@@ -29,9 +29,9 @@ export function defineConventionalRoutes(appDir: string, ignoredFilePatterns?: s
     }
   });
 
-  Object.entries(files).forEach(([key, path]) => {
-    getRouteModuleExports({ appDirectory: appDir, rootDirectory: ''}, path)
-  })
+  // Object.entries(files).forEach(([key, path]) => {
+  //   getRouteModuleExports({ appDirectory: appDir, rootDirectory: ''}, path)
+  // })
   let routeIds = Object.keys(files).sort(byLongestFirst);
   let uniqueRoutes = new Map<string, string>();
 
@@ -87,7 +87,7 @@ export function defineConventionalRoutes(appDir: string, ignoredFilePatterns?: s
     }
   }
 
-  // return defineRoutes(defineNestedRoutes);
+  return defineRoutes(defineNestedRoutes);
 
 }
  
@@ -147,7 +147,7 @@ export function defineRoutes(
   return routes;
 }
 
-export function defineRoutesold(appDir: string, ignoredFilePatterns?: string[]) {
+export function defineRoutesld(appDir: string, ignoredFilePatterns?: string[]) {
   let files: { [routeId: string]: string } = {};
   visitFiles(path.join(appDir, "routes"), (file) => {
     if (
@@ -174,7 +174,8 @@ export function defineRoutesold(appDir: string, ignoredFilePatterns?: string[]) 
   let routeIds = Object.keys(files).sort(byLongestFirst);
   let map = new Map<string, any>();
   let uniqueRoutes = new Map<string, string>();
-  function defineNestedRoutes(parentId?: string):void {
+  function defineNestedRoutes(    defineRoute: DefineRouteFunction,
+    parentId?: string):void {
     let childRouteIds = routeIds.filter(id => findParentRouteId(routeIds, id) === parentId);
 
     for (let routeId of childRouteIds) {
@@ -212,29 +213,30 @@ export function defineRoutesold(appDir: string, ignoredFilePatterns?: string[]) 
           );
         }
         console.log('index Route', routePath)
-        // defineRoute(routePath, files[routeId], {
-        //   index: true,
-        // });
+        defineRoute(routePath, files[routeId], {
+          index: true,
+        });
       } else {
         console.log('nextedRoutes')
-        // defineRoute(routePath, files[routeId], () => {
-          defineNestedRoutes(routeId);
-        // });
+        defineRoute(routePath, files[routeId], () => {
+          defineNestedRoutes(defineRoute, routeId);
+        });
       }
       
     }
   }
 
-  defineNestedRoutes(undefined)
+  let conventionalRoutes = defineRoutes(defineNestedRoutes);
+  let routes: RouteManifest = {
+    root: { path: "", id: "root", file: 'app' },
+  };
+  for (let key of Object.keys(conventionalRoutes)) {
+    let route = conventionalRoutes[key];
+    routes[route.id] = { ...route, parentId: route.parentId || "root" };
+  }
+  return {routes};
 }
 
-// function defineRoute(path, file, childrenOrFunc) {
-//   let route = {
-//     path,
-//     file,
-//     ch
-//   }
-// }
 
 export function visitFiles(
   dir: string,
@@ -274,18 +276,20 @@ export async function getRouteModuleExports(
     outfile: path.resolve(__dirname, fileName),
     logLevel: "silent",
   });
-  console.log(result);
-  console.log('filename', fileName.replace(/.(tsx|jsx|ts|js)$/, '.js'));
   fileName = fileName.replace(/.(tsx|jsx|ts|js)$/, '.js')
-  fse.ensureFile(path.resolve(__dirname, fileName)).then(() => {
-    fse.writeFileSync(path.resolve(__dirname, fileName), result.outputFiles[0].text)
-  })
-
+  // fse.ensureFile(path.resolve(__dirname, fileName)).then(() => {
+  //   fse.writeFileSync(path.resolve(__dirname, fileName), result.outputFiles[0].text)
+  // })
   let metafile = result.metafile!;
+
   for (let key in metafile.outputs) {
     let output = metafile.outputs[key];
-    if (output.entryPoint) return output.exports;
-  }
-
+    if (output.entryPoint){
+      console.log(metafile.outputs)
+      
+      return output.exports;
+    }
+  } 
   throw new Error(`Unable to get exports for route ${fileName}`);
 }
+

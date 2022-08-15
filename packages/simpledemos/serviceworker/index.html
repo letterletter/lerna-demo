@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Concurrent Download Demo</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/spark-md5/3.0.0/spark-md5.min.js"></script>
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <p>Text</p>
+    <script>
+      // Don't register the service worker
+      // until the page has fully loaded
+      window.addEventListener('load', () => {
+        // Is service worker available?
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('http://localhost:9999/sw.js').then(() => {
+            console.log('Service worker registered!');
+          }).catch((error) => {
+            console.warn('Error registering service worker:');
+            console.warn(error);
+          }).finally(() => {
+            document.getElementsByTagName('head')
+            addCssByLink('/css/global.ced4aef2.css')
+          });
+
+          navigator.serviceWorker.ready.then((registration) => {
+            registration.update();
+          });
+        }
+      });
+
+  function addCssByLink(url){ 
+    var doc=document; 
+
+    var link=doc.createElement("link"); 
+
+    link.setAttribute("rel", "stylesheet"); 
+
+    link.setAttribute("type", "text/css"); 
+
+    link.setAttribute("href", url); 
+
+    var heads = doc.getElementsByTagName("head"); 
+
+    if(heads.length) 
+
+        heads[0].appendChild(link); 
+
+    else 
+
+        doc.documentElement.appendChild(link); 
+
+  }
+    </script>
+  </body>
+</html>

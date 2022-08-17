@@ -1,12 +1,9 @@
-// import * as koa from 'koa';
-// import Router from 'koa-router'
-// import { renderToString } from 'react-dom/server';
 const koa = require('koa');
 const Router = require('koa-router');
 const { renderToString } = require('react-dom/server');
 const fs = require('fs');
 const path = require('path')
-// const { createRouteId } = require('./utils/routes');
+
 import Index from './src/routes/index';
 export function createRouteId(file) {
   return normalizeSlashes(stripFileExtension(file));
@@ -44,12 +41,11 @@ function loadRoutes() {
   visitFiles(path.join(appDir, "routes"), async (file) => {
     let routeId = createRouteId(path.join("routes", file));
       console.log('routerId', routeId, path.join( `${appDir}/routes/`, file))
-      let mod = await require(path.join( `${appDir}/routes/`, file))
+      // let mod = await import(path.join( `${appDir}/routes/`, file))
+     import(path.join( `${appDir}/routes/`, file)).then(mod => {
       console.log('mod', mod)
-    //  import(path.join( `${appDir}/routes/`, file)).then(mod => {
-    //   console.log('mod', mod)
-    //   files[routeId] = mod.__esModule && mod.default ? mod.default : mod;
-    // })
+      files[routeId] = mod.__esModule && mod.default ? mod.default : mod;
+    })
     return;
   });
   console.log('files', files)
@@ -87,3 +83,5 @@ function init() {
   console.log('3333 listening')
 }
 init()
+
+loadRoutes()

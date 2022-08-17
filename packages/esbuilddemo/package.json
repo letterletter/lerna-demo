@@ -38,6 +38,7 @@
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
     "@babel/runtime": "^7.18.9",
+    "@types/cacache": "^15.0.1",
     "@types/css-tree": "^1.0.7",
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.0.3",
@@ -58,6 +59,8 @@
   },
   "dependencies": {
     "@babel/core": "^7.18.6",
+    "@esbuild-plugins/node-modules-polyfill": "^0.1.4",
+    "cacache": "^16.1.2",
     "esbuild-plugin-less": "^1.1.8",
     "fs-extra": "^10.1.0",
     "koa": "^2.13.4",

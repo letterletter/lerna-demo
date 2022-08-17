@@ -6,6 +6,96 @@ export interface FrameConfig {
   entryServerFile?: string,
   assetsBuildDirectory?: string,
 } 
+
+export enum ServerMode {
+  Development = "development",
+  Production = "production",
+  Test = "test",
+}
+
+export function isValidServerMode(mode: string): mode is ServerMode {
+  return (
+    mode === ServerMode.Development ||
+    mode === ServerMode.Production ||
+    mode === ServerMode.Test
+  );
+}
+
+export interface RemixMdxConfig {
+  rehypePlugins?: any[];
+  remarkPlugins?: any[];
+}
+
+export type RemixMdxConfigFunction = (
+  filename: string
+) => Promise<RemixMdxConfig | undefined> | RemixMdxConfig | undefined;
+
+export type ServerBuildTarget =
+  | "node-cjs"
+  | "arc"
+  | "netlify"
+  | "vercel"
+  | "cloudflare-pages"
+  | "cloudflare-workers"
+  | "deno";
+
+export type ServerModuleFormat = "esm" | "cjs";
+export type ServerPlatform = "node" | "neutral";
+
+export interface RemixConfig {
+  /**
+   * The absolute path to the root of the Remix project.
+   */
+  rootDirectory: string;
+
+  /**
+   * The absolute path to the application source directory.
+   */
+  appDirectory: string;
+
+  /**
+   * The absolute path to the cache directory.
+   */
+  cacheDirectory: string;
+
+
+  entryClientFile: string;
+
+  entryServerFile: string;
+
+  routes: RouteManifest;
+
+  serverBuildPath: string;
+
+  assetsBuildDirectory: string;
+
+  relativeAssetsBuildDirectory: string;
+
+  publicPath: string;
+
+  serverMode: ServerMode;
+
+  devServerPort: number;
+
+  devServerBroadcastDelay: number;
+
+  mdx?: RemixMdxConfig | RemixMdxConfigFunction;
+
+  serverModuleFormat: ServerModuleFormat;
+
+  serverPlatform: ServerPlatform;
+
+  serverBuildTarget?: ServerBuildTarget;
+
+  serverBuildTargetEntryModule: string;
+
+  serverEntryPoint?: string;
+
+  serverDependenciesToBundle: Array<string | RegExp>;
+
+  watchPaths: string[];
+}
+
 export interface ConfigRoute {
   /**
    * The path this route uses to match on the URL pathname.

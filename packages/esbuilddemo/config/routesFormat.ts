@@ -167,10 +167,7 @@ export function defineRoutesld(appDir: string, ignoredFilePatterns?: string[]) {
       `Invalid route module file: ${path.join(appDir, "routes", file)}`
     );
   });
-  // let res = 
-  Object.entries(files).forEach(([key, path]) => {
-    getRouteModuleExports({ appDirectory: appDir, rootDirectory: ''}, path)
-  })
+
   let routeIds = Object.keys(files).sort(byLongestFirst);
   let map = new Map<string, any>();
   let uniqueRoutes = new Map<string, string>();
@@ -273,7 +270,7 @@ export async function getRouteModuleExports(
       ".js": "jsx",
       '.tsx': 'tsx'
     },
-    outfile: path.resolve(__dirname, fileName),
+    outfile: path.resolve(__dirname, fileName.replace(/.(tsx|jsx|ts|js)$/, '.js')),
     logLevel: "silent",
   });
   fileName = fileName.replace(/.(tsx|jsx|ts|js)$/, '.js')
@@ -284,9 +281,7 @@ export async function getRouteModuleExports(
 
   for (let key in metafile.outputs) {
     let output = metafile.outputs[key];
-    if (output.entryPoint){
-      console.log(metafile.outputs)
-      
+    if (output.entryPoint){      
       return output.exports;
     }
   } 

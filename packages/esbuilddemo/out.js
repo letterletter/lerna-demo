@@ -30837,6 +30837,21 @@ function visitFiles(dir, visitor, baseDir = dir) {
     }
   }
 }
+function loadRoutes() {
+  let files = {};
+  const appDir = path.join(__dirname, "./config");
+  visitFiles(path.join(appDir, "routes"), async (file) => {
+    let routeId = createRouteId(path.join("routes", file));
+    console.log("routerId", routeId, path.join(`${appDir}/routes/`, file));
+    import(path.join(`${appDir}/routes/`, file)).then((mod) => {
+      console.log("mod", mod);
+      files[routeId] = mod.__esModule && mod.default ? mod.default : mod;
+    });
+    return;
+  });
+  console.log("files", files);
+  return files;
+}
 function init() {
   const app = new koa();
   const router = new Router();
@@ -30859,6 +30874,7 @@ function init() {
   console.log("3333 listening");
 }
 init();
+loadRoutes();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   createRouteId,

@@ -25,7 +25,6 @@
     "buildserver": "node ./build.js",
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build": "esbuild src/index.tsx --outdir=dist --bundle",
-    "serve": "esbuild src/app.js --outfile=out.js --bundle --serve=8000",
     "buildPlugin": "esbuild plugins/cssModulePlugin.ts plugins/sassPlugin.ts --outdir=plugins --bundle --format=cjs --platform=node"
   },
   "bugs": {

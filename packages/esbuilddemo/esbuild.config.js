@@ -20,19 +20,20 @@ esbuild.build({
   entryPoints: ['src/index.tsx'],
   sourcemap: true,
   bundle: true,
+  loader: { '.js': 'jsx', '.tsx': 'tsx', '.tsx': 'tsx' },
+  inject: ['./react-shim.js'], // 在这里引入会注入每个文件
   outfile: 'dist/index.js',
-  plugins: [
-    removeConsolePlugin(), 
-    aliasPlugin({
-      'configData': path.join(__dirname, 'src/config.json'),
-      'src': './src'
-    }),
-    sassPlugin()
-    // cssModulesPlugin({
-    //   localIdentName: "[local]--[hash:8:md5:hex]",
-    // }),
-    // sassPlugin()
-],
+//   plugins: [
+//     removeConsolePlugin(), 
+//     aliasPlugin({
+//       'configData': path.join(__dirname, 'src/config.json'),
+//       'src': './src'
+//     }),
+//     sassPlugin(),
+//     cssModulesPlugin({
+//       localIdentName: "[local]--[hash:8:md5:hex]",
+//     }),
+// ],
   watch: {
     onRebuild(error, result) {
       if(error) console.log('watch build failed', error);

@@ -7,7 +7,11 @@ import { getAppDependencies } from './dependencies';
 import { loaders } from "./loaders";
 import { NodeModulesPolyfillPlugin } from "@esbuild-plugins/node-modules-polyfill";
 import { browserRouteModulesPlugin } from './plugins/browserRouteModulesPlugin';
-import { urlImportsPlugin } from './plugins/urlImportsPlugin'
+import { urlImportsPlugin } from './plugins/urlImportsPlugin';
+import { writeFileSafe } from './utils/fs'
+import { createAssetsManifest } from './assets';
+import type { AssetsManifest } from "./assets";
+
 interface BuildConfig {
   mode: BuildMode;
   target: BuildTarget;
@@ -18,7 +22,7 @@ interface BuildOptions extends Partial<BuildConfig> {
   onBuildFailure?(failure: Error | esbuild.BuildFailure): void;
 }
 
-const reactShim = path.resolve(__dirname, "config/shims/react.ts");
+const reactShim = path.resolve(__dirname, "shims/react.ts");
 
 export async function createBrowserBuild(
   config: RemixConfig,
@@ -82,4 +86,22 @@ export async function createBrowserBuild(
     },
     plugins,
   });
+}
+
+export async function generateAssetsManifest(
+  config: RemixConfig,
+  metafile: esbuild.Metafile
+): Promise<AssetsManifest> {
+  console.log('metafile', metafile)
+  let assetsManifest = await createAssetsManifest(config, metafile);
+  let filename = `manifest-${assetsManifest.version.toUpperCase()}.js`;
+
+  assetsManifest.url = config.publicPath + filename;
+
+  await writeFileSafe(
+    path.join(config.assetsBuildDirectory, filename),
+    `window.__remixManifest=${JSON.stringify(assetsManifest)};`
+  );
+
+  return assetsManifest;
 }

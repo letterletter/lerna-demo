@@ -67,7 +67,7 @@ export function defineConventionalRoutes(appDir: string, ignoredFilePatterns?: s
           uniqueRoutes.set(uniqueRouteId, routeId);
         }
       }
-      console.log('for child defineNested) routeId , fullpath. routePath ', routeId, fullPath, routePath)
+      // console.log('for child defineNested) routeId , fullpath. routePath ', routeId, fullPath, routePath)
       // debugger
 
       if (isIndexRoute) {
@@ -147,7 +147,7 @@ export function defineRoutes(
   return routes;
 }
 
-export function defineRoutesld(appDir: string, ignoredFilePatterns?: string[]) {
+export function defineRoutesold(appDir: string, ignoredFilePatterns?: string[]) {
   let files: { [routeId: string]: string } = {};
   visitFiles(path.join(appDir, "routes"), (file) => {
     if (
@@ -197,7 +197,7 @@ export function defineRoutesld(appDir: string, ignoredFilePatterns?: string[]) {
           uniqueRoutes.set(uniqueRouteId, routeId);
         }
       }
-      console.log('for child defineNested) routeId , fullpath. routePath ', routeId, fullPath, routePath)
+      // console.log('for child defineNested) routeId , fullpath. routePath ', routeId, fullPath, routePath)
 
       if (isIndexRoute) {
         let invalidChildRoutes = routeIds.filter(
@@ -209,12 +209,12 @@ export function defineRoutesld(appDir: string, ignoredFilePatterns?: string[]) {
             `Child routes are not allowed in index routes. Please remove child routes of ${routeId}`
           );
         }
-        console.log('index Route', routePath)
+        // console.log('index Route', routePath)
         defineRoute(routePath, files[routeId], {
           index: true,
         });
       } else {
-        console.log('nextedRoutes')
+        // console.log('nextedRoutes')
         defineRoute(routePath, files[routeId], () => {
           defineNestedRoutes(defineRoute, routeId);
         });

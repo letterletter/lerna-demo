@@ -65,7 +65,7 @@ export interface RemixConfig {
 
   routes: RouteManifest;
 
-  serverBuildPath: string;
+  serverBuildPath?: string;
 
   assetsBuildDirectory: string;
 
@@ -73,27 +73,27 @@ export interface RemixConfig {
 
   publicPath: string;
 
-  serverMode: ServerMode;
+  serverMode?: ServerMode;
 
-  devServerPort: number;
+  devServerPort?: number;
 
-  devServerBroadcastDelay: number;
+  devServerBroadcastDelay?: number;
 
   mdx?: RemixMdxConfig | RemixMdxConfigFunction;
 
-  serverModuleFormat: ServerModuleFormat;
+  serverModuleFormat?: ServerModuleFormat;
 
-  serverPlatform: ServerPlatform;
+  serverPlatform?: ServerPlatform;
 
   serverBuildTarget?: ServerBuildTarget;
 
-  serverBuildTargetEntryModule: string;
+  serverBuildTargetEntryModule?: string;
 
   serverEntryPoint?: string;
 
-  serverDependenciesToBundle: Array<string | RegExp>;
+  serverDependenciesToBundle?: Array<string | RegExp>;
 
-  watchPaths: string[];
+  watchPaths?: string[];
 }
 
 export interface ConfigRoute {

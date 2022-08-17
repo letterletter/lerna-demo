@@ -102,6 +102,6 @@ export function createRoutePath(partialRouteId: string): string | undefined {
   if (rawSegmentBuffer === "index" && result.endsWith("index")) {
     result = result.replace(/\/?index$/, "");
   }
-  console.log('createRoutePath', partialRouteId, result)
+  // console.log('createRoutePath', partialRouteId, result)
   return result || undefined;
 }

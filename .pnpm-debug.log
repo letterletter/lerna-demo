@@ -1,0 +1,23 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 info pnpm": {
+    "err": {
+      "name": "Error",
+      "message": "not found: dev",
+      "code": "ENOENT",
+      "stack": "Error: not found: dev\n    at getNotFoundError (/Users/wufan/.nvm/versions/node/v16.14.0/lib/node_modules/pnpm/dist/pnpm.cjs:41772:51)\n    at Function.whichSync [as sync] (/Users/wufan/.nvm/versions/node/v16.14.0/lib/node_modules/pnpm/dist/pnpm.cjs:41849:13)\n    at getCommandAbsolutePathSync (/Users/wufan/.nvm/versions/node/v16.14.0/lib/node_modules/pnpm/dist/pnpm.cjs:43414:44)\n    at default_1 (/Users/wufan/.nvm/versions/node/v16.14.0/lib/node_modules/pnpm/dist/pnpm.cjs:43423:32)\n    at /Users/wufan/.nvm/versions/node/v16.14.0/lib/node_modules/pnpm/dist/pnpm.cjs:180807:39"
+    }
+  },
+  "2 error pnpm": {
+    "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+    "prefix": "/Users/wufan/Code/lerna-demo",
+    "err": {
+      "name": "pnpm",
+      "message": "not found: dev",
+      "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+      "stack": "Error: not found: dev\n    at getNotFoundError (/Users/wufan/.nvm/versions/node/v16.14.0/lib/node_modules/pnpm/dist/pnpm.cjs:41772:51)\n    at Function.whichSync [as sync] (/Users/wufan/.nvm/versions/node/v16.14.0/lib/node_modules/pnpm/dist/pnpm.cjs:41849:13)\n    at getCommandAbsolutePathSync (/Users/wufan/.nvm/versions/node/v16.14.0/lib/node_modules/pnpm/dist/pnpm.cjs:43414:44)\n    at default_1 (/Users/wufan/.nvm/versions/node/v16.14.0/lib/node_modules/pnpm/dist/pnpm.cjs:43423:32)\n    at /Users/wufan/.nvm/versions/node/v16.14.0/lib/node_modules/pnpm/dist/pnpm.cjs:180807:39"
+    }
+  }
+}

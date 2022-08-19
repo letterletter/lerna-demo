@@ -3,11 +3,12 @@ import { createBrowserBuild, generateAssetsManifest } from './config/compiler'
 import * as path from 'path';
 import { renderToString } from 'react-dom/server';
 import type { RouteManifest } from "./types";
-import { BuildResult } from "esbuild";
-
+import { createClientRoutes } from './config/createRoutes'
+import { MyComp } from './config/ReactRoute';
+import { writeFileSafe } from './config/utils/fs'
 let conventionalRoutes = defineConventionalRoutes(path.join(__dirname, './src'));
 let routes: RouteManifest = {
-  root: { path: "", id: "root", file: path.resolve(__dirname, './src/index.tsx') },
+  root: { path: "/", id: "root", file: path.resolve(__dirname, './src/index.tsx') },
 };
 for (let key of Object.keys(conventionalRoutes)) {
   let route = conventionalRoutes[key];
@@ -44,10 +45,17 @@ const config ={
   // mdx,
   // watchPaths,
 };
+
 async function test() {
   let browserBuildPromise =  createBrowserBuild(config, { incremental: false,})
-  browserBuildPromise.then(build => {
-    generateAssetsManifest(config, build.metafile!)
+  browserBuildPromise.then(async build => {
+    let manifest = await generateAssetsManifest(config, build.metafile!);
+    let res = createClientRoutes(manifest?.routes, {}, MyComp)
+    writeFileSafe(
+      path.join(__dirname, 'router.json'),
+    `${JSON.stringify(res)};`
+    )
+    console.log(createClientRoutes(manifest?.routes, {}, MyComp))
   })
 }
 test()

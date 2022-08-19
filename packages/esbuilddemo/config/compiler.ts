@@ -92,9 +92,9 @@ export async function generateAssetsManifest(
   config: RemixConfig,
   metafile: esbuild.Metafile
 ): Promise<AssetsManifest> {
-  console.log('metafile', metafile)
   let assetsManifest = await createAssetsManifest(config, metafile);
   let filename = `manifest-${assetsManifest.version.toUpperCase()}.js`;
+  // console.log('metafile', assetsManifest)
 
   assetsManifest.url = config.publicPath + filename;
 

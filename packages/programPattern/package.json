@@ -1,0 +1,37 @@
+{
+  "name": "programpattern",
+  "version": "0.0.0",
+  "description": "iop,aop,oop",
+  "author": "wufan12 <wufan12@kuaishou.com>",
+  "homepage": "https://github.com/letterletter/lerna-demo#readme",
+  "license": "ISC",
+  "main": "lib/programPattern.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.corp.kuaishou.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/letterletter/lerna-demo.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "esbuild iop/class_id.ts --outfile=class_id.js --platform=node --bundle"
+  },
+  "bugs": {
+    "url": "https://github.com/letterletter/lerna-demo/issues"
+  },
+  "dependencies": {
+    "@types/node": "^18.7.6",
+    "esbuild": "^0.15.5",
+    "inversify": "^6.0.1",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^4.7.4"
+  }
+}

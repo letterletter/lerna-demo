@@ -630,9 +630,9 @@ var require_react_development = __commonJS({
               case REACT_LAZY_TYPE: {
                 var lazyComponent = type;
                 var payload = lazyComponent._payload;
-                var init2 = lazyComponent._init;
+                var init = lazyComponent._init;
                 try {
-                  return getComponentNameFromType(init2(payload));
+                  return getComponentNameFromType(init(payload));
                 } catch (x) {
                   return null;
                 }
@@ -1305,9 +1305,9 @@ var require_react_development = __commonJS({
           var dispatcher = resolveDispatcher();
           return dispatcher.useState(initialState);
         }
-        function useReducer(reducer, initialArg, init2) {
+        function useReducer(reducer, initialArg, init) {
           var dispatcher = resolveDispatcher();
-          return dispatcher.useReducer(reducer, initialArg, init2);
+          return dispatcher.useReducer(reducer, initialArg, init);
         }
         function useRef(initialValue) {
           var dispatcher = resolveDispatcher();
@@ -1597,9 +1597,9 @@ var require_react_development = __commonJS({
               case REACT_LAZY_TYPE: {
                 var lazyComponent = type;
                 var payload = lazyComponent._payload;
-                var init2 = lazyComponent._init;
+                var init = lazyComponent._init;
                 try {
-                  return describeUnknownElementTypeFrameInDEV(init2(payload), source, ownerFn);
+                  return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
                 } catch (x) {
                 }
               }
@@ -2809,7 +2809,7 @@ var require_node = __commonJS({
     init_react_shim();
     var tty = require("tty");
     var util = require("util");
-    exports2.init = init2;
+    exports2.init = init;
     exports2.log = log2;
     exports2.formatArgs = formatArgs;
     exports2.save = save;
@@ -2955,7 +2955,7 @@ var require_node = __commonJS({
     function load() {
       return process.env.DEBUG;
     }
-    function init2(debug) {
+    function init(debug) {
       debug.inspectOpts = {};
       const keys = Object.keys(exports2.inspectOpts);
       for (let i = 0; i < keys.length; i++) {
@@ -23179,9 +23179,9 @@ var require_react_dom_server_legacy_node_development = __commonJS({
               case REACT_LAZY_TYPE: {
                 var lazyComponent = type;
                 var payload = lazyComponent._payload;
-                var init2 = lazyComponent._init;
+                var init = lazyComponent._init;
                 try {
-                  return getComponentNameFromType(init2(payload));
+                  return getComponentNameFromType(init(payload));
                 } catch (x) {
                   return null;
                 }
@@ -23433,9 +23433,9 @@ var require_react_dom_server_legacy_node_development = __commonJS({
               case REACT_LAZY_TYPE: {
                 var lazyComponent = type;
                 var payload = lazyComponent._payload;
-                var init2 = lazyComponent._init;
+                var init = lazyComponent._init;
                 try {
-                  return describeUnknownElementTypeFrameInDEV(init2(payload), source, ownerFn);
+                  return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
                 } catch (x) {
                 }
               }
@@ -24222,7 +24222,7 @@ var require_react_dom_server_legacy_node_development = __commonJS({
           }
           return useReducer(basicStateReducer, initialState);
         }
-        function useReducer(reducer, initialArg, init2) {
+        function useReducer(reducer, initialArg, init) {
           {
             if (reducer !== basicStateReducer) {
               currentHookNameInDev = "useReducer";
@@ -24263,7 +24263,7 @@ var require_react_dom_server_legacy_node_development = __commonJS({
             if (reducer === basicStateReducer) {
               initialState = typeof initialArg === "function" ? initialArg() : initialArg;
             } else {
-              initialState = init2 !== void 0 ? init2(initialArg) : initialArg;
+              initialState = init !== void 0 ? init(initialArg) : initialArg;
             }
             {
               isInHookUserCodeInDev = false;
@@ -24887,8 +24887,8 @@ var require_react_dom_server_legacy_node_development = __commonJS({
         function renderLazyComponent(request, task, lazyComponent, props, ref) {
           pushBuiltInComponentStackInDEV(task, "Lazy");
           var payload = lazyComponent._payload;
-          var init2 = lazyComponent._init;
-          var Component = init2(payload);
+          var init = lazyComponent._init;
+          var Component = init(payload);
           var resolvedProps = resolveDefaultProps(Component, props);
           renderElement(request, task, Component, resolvedProps, ref);
           popComponentStackInDEV(task);
@@ -25011,11 +25011,11 @@ var require_react_dom_server_legacy_node_development = __commonJS({
               case REACT_LAZY_TYPE: {
                 var lazyNode = node;
                 var payload = lazyNode._payload;
-                var init2 = lazyNode._init;
+                var init = lazyNode._init;
                 var resolvedNode;
                 {
                   try {
-                    resolvedNode = init2(payload);
+                    resolvedNode = init(payload);
                   } catch (x) {
                     if (typeof x === "object" && x !== null && typeof x.then === "function") {
                       pushBuiltInComponentStackInDEV(task, "Lazy");
@@ -28335,9 +28335,9 @@ var require_react_dom_server_node_development = __commonJS({
               case REACT_LAZY_TYPE: {
                 var lazyComponent = type;
                 var payload = lazyComponent._payload;
-                var init2 = lazyComponent._init;
+                var init = lazyComponent._init;
                 try {
-                  return getComponentNameFromType(init2(payload));
+                  return getComponentNameFromType(init(payload));
                 } catch (x) {
                   return null;
                 }
@@ -28589,9 +28589,9 @@ var require_react_dom_server_node_development = __commonJS({
               case REACT_LAZY_TYPE: {
                 var lazyComponent = type;
                 var payload = lazyComponent._payload;
-                var init2 = lazyComponent._init;
+                var init = lazyComponent._init;
                 try {
-                  return describeUnknownElementTypeFrameInDEV(init2(payload), source, ownerFn);
+                  return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
                 } catch (x) {
                 }
               }
@@ -29378,7 +29378,7 @@ var require_react_dom_server_node_development = __commonJS({
           }
           return useReducer(basicStateReducer, initialState);
         }
-        function useReducer(reducer, initialArg, init2) {
+        function useReducer(reducer, initialArg, init) {
           {
             if (reducer !== basicStateReducer) {
               currentHookNameInDev = "useReducer";
@@ -29419,7 +29419,7 @@ var require_react_dom_server_node_development = __commonJS({
             if (reducer === basicStateReducer) {
               initialState = typeof initialArg === "function" ? initialArg() : initialArg;
             } else {
-              initialState = init2 !== void 0 ? init2(initialArg) : initialArg;
+              initialState = init !== void 0 ? init(initialArg) : initialArg;
             }
             {
               isInHookUserCodeInDev = false;
@@ -30043,8 +30043,8 @@ var require_react_dom_server_node_development = __commonJS({
         function renderLazyComponent(request, task, lazyComponent, props, ref) {
           pushBuiltInComponentStackInDEV(task, "Lazy");
           var payload = lazyComponent._payload;
-          var init2 = lazyComponent._init;
-          var Component = init2(payload);
+          var init = lazyComponent._init;
+          var Component = init(payload);
           var resolvedProps = resolveDefaultProps(Component, props);
           renderElement(request, task, Component, resolvedProps, ref);
           popComponentStackInDEV(task);
@@ -30167,11 +30167,11 @@ var require_react_dom_server_node_development = __commonJS({
               case REACT_LAZY_TYPE: {
                 var lazyNode = node;
                 var payload = lazyNode._payload;
-                var init2 = lazyNode._init;
+                var init = lazyNode._init;
                 var resolvedNode;
                 {
                   try {
-                    resolvedNode = init2(payload);
+                    resolvedNode = init(payload);
                   } catch (x) {
                     if (typeof x === "object" && x !== null && typeof x.then === "function") {
                       pushBuiltInComponentStackInDEV(task, "Lazy");
@@ -30803,13 +30803,6 @@ init_react_shim();
 
 // src/routes/index.tsx
 init_react_shim();
-function Index() {
-  return /* @__PURE__ */ React.createElement("div", null, "Hello Demo!", /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("a", {
-    href: "/create"
-  }, "\u8DF3\u8F6Ccreate"), /* @__PURE__ */ React.createElement("a", {
-    href: "/list"
-  }, "\u8DF3\u8F6Clist")));
-}
 
 // koatest.js
 var koa = require_application();
@@ -30843,37 +30836,18 @@ function loadRoutes() {
   visitFiles(path.join(appDir, "routes"), async (file) => {
     let routeId = createRouteId(path.join("routes", file));
     console.log("routerId", routeId, path.join(`${appDir}/routes/`, file));
+    let RouteIndex;
     import(path.join(`${appDir}/routes/`, file)).then((mod) => {
-      console.log("mod", mod);
-      files[routeId] = mod.__esModule && mod.default ? mod.default : mod;
+      console.log("mod", mod.default);
+    });
+    fs.promises.readFile(path.join(`${appDir}/routes/`, file), { encoding: "utf-8" }).then((mod) => {
+      console.log("mod", typeof mod, mod);
     });
     return;
   });
   console.log("files", files);
   return files;
 }
-function init() {
-  const app = new koa();
-  const router = new Router();
-  router.get(/\/*/, async (ctx, next) => {
-    console.log(ctx.request.url);
-    let content = renderToString(/* @__PURE__ */ React.createElement(Index, null));
-    ctx.body = `
-    <html>
-    <head>
-    <title>ssr</title>
-    </head>
-    <body>
-    <divid="root">${content}</div>
-    </body>
-    </html>
-    `;
-  });
-  app.use(router.routes()).use(router.allowedMethods());
-  app.listen(3333);
-  console.log("3333 listening");
-}
-init();
 loadRoutes();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {

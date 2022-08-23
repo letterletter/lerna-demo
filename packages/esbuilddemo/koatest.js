@@ -5,6 +5,8 @@ const fs = require('fs');
 const path = require('path')
 
 import Index from './src/routes/index';
+
+
 export function createRouteId(file) {
   return normalizeSlashes(stripFileExtension(file));
 }
@@ -42,10 +44,18 @@ function loadRoutes() {
     let routeId = createRouteId(path.join("routes", file));
       console.log('routerId', routeId, path.join( `${appDir}/routes/`, file))
       // let mod = await import(path.join( `${appDir}/routes/`, file))
-     import(path.join( `${appDir}/routes/`, file)).then(mod => {
-      console.log('mod', mod)
-      files[routeId] = mod.__esModule && mod.default ? mod.default : mod;
+    //  import(path.join( `${appDir}/routes/`, file)).then(mod => {
+    //   console.log('mod', mod)
+    //   files[routeId] = mod.__esModule && mod.default ? mod.default : mod;
+    // })
+    let RouteIndex 
+    import(path.join( `${appDir}/routes/`, file)).then(mod => {
+      console.log('mod', mod.default)
     })
+    fs.promises.readFile(path.join( `${appDir}/routes/`, file), {encoding: 'utf-8'}).then(mod => {
+      console.log('mod', typeof mod,mod)
+    })
+
     return;
   });
   console.log('files', files)
@@ -63,6 +73,7 @@ function init() {
     // console.log(Comp.outputFiles[0].text);
     // let content = renderToString(Comp.outputFiles[0].text);
     let content=renderToString(<Index />);
+  
     ctx.body=`
     <html>
     <head>
@@ -82,6 +93,6 @@ function init() {
   app.listen(3333);
   console.log('3333 listening')
 }
-init()
+// init()
 
 loadRoutes()

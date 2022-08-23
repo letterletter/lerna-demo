@@ -14,7 +14,7 @@ for (let key of Object.keys(conventionalRoutes)) {
   let route = conventionalRoutes[key];
   routes[route.id] = { ...route, parentId: route.parentId || "root" };
 }
-// console.log('res routes', routes, conventionalRoutes);
+console.log('res routes', routes, conventionalRoutes);
 
 let rootDirectory = __dirname;
 let assetsBuildDirectory = path.join("public", "build");
@@ -50,12 +50,13 @@ async function test() {
   let browserBuildPromise =  createBrowserBuild(config, { incremental: false,})
   browserBuildPromise.then(async build => {
     let manifest = await generateAssetsManifest(config, build.metafile!);
+    console.log('manifest', manifest)
     let res = createClientRoutes(manifest?.routes, {}, MyComp)
     writeFileSafe(
       path.join(__dirname, 'router.json'),
     `${JSON.stringify(res)};`
     )
-    console.log(createClientRoutes(manifest?.routes, {}, MyComp))
+    console.log(res, 'res')
   })
 }
 test()

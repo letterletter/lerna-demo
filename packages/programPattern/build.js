@@ -1,7 +1,7 @@
 const esbuild = require('esbuild');
 
 esbuild.build({
-  entryPoints: ['iop/class_id.ts'],
+  entryPoints: ['iop/provider_injection.ts'],
   bundle: true,
   platform: "node",
   loader: { '.js': 'jsx', '.tsx': 'tsx', '.tsx': 'tsx' },

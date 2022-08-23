@@ -4018,10 +4018,10 @@ var require_optional = __commonJS({
     var METADATA_KEY = __importStar(require_metadata_keys());
     var metadata_1 = require_metadata();
     var decorator_utils_1 = require_decorator_utils();
-    function optional() {
+    function optional2() {
       return (0, decorator_utils_1.createTaggedDecorator)(new metadata_1.Metadata(METADATA_KEY.OPTIONAL_TAG, true));
     }
-    exports.optional = optional;
+    exports.optional = optional2;
   }
 });
 
@@ -4425,7 +4425,7 @@ var require_inversify = __commonJS({
   }
 });
 
-// iop/class_id.ts
+// iop/provider_injection.ts
 var import_inversify = __toESM(require_inversify());
 
 // node_modules/reflect-metadata/Reflect.js
@@ -5150,8 +5150,11 @@ var Reflect2;
   });
 })(Reflect2 || (Reflect2 = {}));
 
-// iop/class_id.ts
+// iop/provider_injection.ts
 var Katana = class {
+  constructor() {
+    this.name = "Katana";
+  }
   hit() {
     return "cut!";
   }
@@ -5160,36 +5163,53 @@ Katana = __decorateClass([
   (0, import_inversify.injectable)()
 ], Katana);
 var Shuriken = class {
+  constructor() {
+    this.name = "Shuriken";
+  }
   throw() {
-    return "hit!";
+    return "throw!";
   }
 };
 Shuriken = __decorateClass([
   (0, import_inversify.injectable)()
 ], Shuriken);
 var Ninja = class {
-  constructor(katana, shuriken) {
-    this._katana = katana;
-    this._shuriken = shuriken;
+  constructor(katanaProvider, shuriken) {
+    this.katanaProvider = katanaProvider;
+    this.katana = null;
+    this.shuriken = shuriken;
   }
   fight() {
-    return this._katana.hit();
+    return this.katana.hit();
   }
   sneak() {
-    return this._shuriken.throw();
+    return this.shuriken.throw();
   }
 };
 Ninja = __decorateClass([
   (0, import_inversify.injectable)(),
-  __decorateParam(0, (0, import_inversify.inject)(Katana)),
-  __decorateParam(1, (0, import_inversify.inject)(Shuriken))
+  __decorateParam(0, (0, import_inversify.inject)("KatanaProvider")),
+  __decorateParam(1, (0, import_inversify.inject)("Shuriken"))
 ], Ninja);
 var container = new import_inversify.Container();
-container.bind(Ninja).to(Ninja);
-container.bind(Katana).to(Katana);
-container.bind(Shuriken).to(Shuriken);
-var ninja = container.get(Ninja);
-console.log(ninja.fight());
+container.bind("Shuriken").to(Shuriken);
+container.bind("Ninja").to(Ninja);
+container.bind("Katana").to(Katana);
+container.bind("KatanaProvider").toProvider((context) => {
+  return () => {
+    return new Promise((resolve) => {
+      let katana = context.container.get("Katana");
+      resolve(katana);
+    });
+  };
+});
+var ninja = container.get("Ninja");
+ninja.katanaProvider().then((katana) => {
+  ninja.katana = katana;
+  console.log("ninja", ninja);
+}).catch((e) => {
+  console.log(e);
+});
 /*! *****************************************************************************
 Copyright (C) Microsoft. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
